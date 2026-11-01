@@ -1,0 +1,24 @@
+---
+description: Use Playwright only when the user explicitly asks for browser checks
+alwaysApply: true
+---
+
+# Playwright / browser MCP
+
+Do **not** open Playwright or call browser MCP tools (`browser_navigate`, `browser_take_screenshot`, `browser_resize`, `browser_evaluate`, etc.) as part of your default workflow.
+
+Use them **only when the user explicitly asks**, for example:
+
+- “Check in the browser”
+- “Take a screenshot”
+- “Use Playwright”
+- “Verify visually at 1030px”
+
+For routine verification without that request, prefer:
+
+- `npx tsc --noEmit`, `npm run build` (when appropriate)
+- Reading code and CSS
+- Shell HTTP checks (`curl`) if a dev server is already running
+- Asking the user to confirm in the browser when a visual check is needed
+
+Do not launch browser automation “just to be sure” after CSS or layout changes.
