@@ -855,6 +855,15 @@ main .band {
   z-index: 2;
 }
 
+.boiler-card--image .boiler-card__status {
+  width: 214px;
+}
+
+.boiler-card--image .boiler-card__status strong {
+  font-size: 1.3rem;
+  line-height: 1.1;
+}
+
 .boiler-card__status {
   position: absolute;
   right: 4px;

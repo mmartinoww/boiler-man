@@ -23,6 +23,8 @@ type HeroProps = {
   crumbs?: BreadcrumbItem[];
   chip?: string;
   statusMeta?: string;
+  statusLabel?: string;
+  statusTitle?: string;
   /** Optional illustration that replaces the CSS boiler in the right column (keeps the chip and status pills). */
   visualImage?: { src: string; alt: string; width: number; height: number };
 };
@@ -39,6 +41,8 @@ export function Hero({
   crumbs,
   chip = "Спешен сервиз",
   statusMeta = "до 58°C · на място",
+  statusLabel = "Статус",
+  statusTitle = "Готова",
   visualImage
 }: HeroProps) {
   return (
@@ -106,8 +110,8 @@ export function Hero({
                 </div>
               )}
               <div className="boiler-card__status">
-                <span className="boiler-card__statusLabel">Статус</span>
-                <strong>Готова</strong>
+                <span className="boiler-card__statusLabel">{statusLabel}</span>
+                <strong>{statusTitle}</strong>
                 <span className="boiler-card__statusMeta">{statusMeta}</span>
               </div>
               <div className="boiler-card__chip">

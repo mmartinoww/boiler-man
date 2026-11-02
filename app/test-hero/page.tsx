@@ -91,6 +91,9 @@ export default function TestHero() {
           { value: "до 2 часа", label: "при възможност за Пазарджик", icon: "clock" },
           { value: "6 месеца", label: "гаранция за ремонтираната част", icon: "shield" }
         ]}
+        statusLabel="НОВИНИ:"
+        statusTitle="Бойлер-мен спасява деня!"
+        statusMeta="Топла вода за всички!"
         visualImage={{
           src: "/img/Superhero%20Boiler%20with%20Radiant%20Cape.webp",
           alt: "Бойлер-супергерой с блестяща пелерина",
