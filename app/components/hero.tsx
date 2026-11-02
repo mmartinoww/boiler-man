@@ -23,10 +23,24 @@ type HeroProps = {
   crumbs?: BreadcrumbItem[];
   chip?: string;
   statusMeta?: string;
+  /** Optional illustration that replaces the CSS boiler in the right column (keeps the chip and status pills). */
+  visualImage?: { src: string; alt: string; width: number; height: number };
 };
 
 /** The original full-height hero. Used by the home page and both city pages. Visual design is unchanged. */
-export function Hero({ eyebrow, line, accent, sub, text, usp, signals, crumbs, chip = "Спешен сервиз", statusMeta = "до 58°C · на място" }: HeroProps) {
+export function Hero({
+  eyebrow,
+  line,
+  accent,
+  sub,
+  text,
+  usp,
+  signals,
+  crumbs,
+  chip = "Спешен сервиз",
+  statusMeta = "до 58°C · на място",
+  visualImage
+}: HeroProps) {
   return (
     <div className="hero-intro">
       <SiteHeader brandName={SITE_NAME} phoneHref={business.phoneHref} phoneLabel={business.phone} />
@@ -71,14 +85,26 @@ export function Hero({ eyebrow, line, accent, sub, text, usp, signals, crumbs, c
             </div>
           </div>
 
-          <div className="hero__visual" aria-hidden="true">
-            <div className="boiler-card">
-              <div className="boiler-card__halo" />
-              <div className="boiler-card__device">
-                <span className="boiler-card__light" />
-                <span className="boiler-card__gauge" />
-                <span className="boiler-card__drop" />
-              </div>
+          <div className="hero__visual" aria-hidden={visualImage ? undefined : true}>
+            <div className={`boiler-card${visualImage ? " boiler-card--image" : ""}`}>
+              <div className="boiler-card__halo" aria-hidden="true" />
+              {visualImage ? (
+                <img
+                  className="boiler-card__image"
+                  src={visualImage.src}
+                  alt={visualImage.alt}
+                  width={visualImage.width}
+                  height={visualImage.height}
+                  fetchPriority="high"
+                  decoding="async"
+                />
+              ) : (
+                <div className="boiler-card__device">
+                  <span className="boiler-card__light" />
+                  <span className="boiler-card__gauge" />
+                  <span className="boiler-card__drop" />
+                </div>
+              )}
               <div className="boiler-card__status">
                 <span className="boiler-card__statusLabel">Статус</span>
                 <strong>Готова</strong>
